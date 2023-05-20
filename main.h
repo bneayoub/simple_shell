@@ -7,4 +7,4 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 
-#endif
+#endif /* MAIN_H */
