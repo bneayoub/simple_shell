@@ -9,4 +9,7 @@
 #include <string.h>
 #include <errno.h>
 
+extern char **environ;
+
+
 #endif /* MAIN_H */
