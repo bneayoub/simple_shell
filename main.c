@@ -14,7 +14,10 @@ int main(void)
 	pid_t pid;
 	int status = 0;
 	char *tok;
-	char i = 1;
+	int i = 1;
+	char *path;
+	char *dir;
+	char path_search[4096];
 
 	while (666)
 	{
@@ -51,9 +54,51 @@ int main(void)
 			}
 			args[i - 1] = NULL;
 			free(tok);
-			if (execve(args[0], args, NULL) == -1)
+
+			if (args[0][0] == '/')
 			{
-				perror(userInput_buf);
+				if (execve(args[0], args, NULL) == -1)
+				{
+					perror(userInput_buf);
+					free(userInput_buf);
+					exit(EXIT_FAILURE);
+				}
+			}
+			else
+			{
+				path = getenv("PATH");
+				if (path == NULL)
+				{
+					write(2, "PATH variable not found.\n", 25);
+					exit(EXIT_FAILURE);
+				}
+				sprintf(path_search, "%s:/usr/bin", path);
+
+				dir = strtok(path_search, ":");
+				while (dir)
+				{
+					char *command_path = malloc(strlen(dir) + strlen(args[0]) + 2);
+					strcpy(command_path, dir);
+					strcat(command_path, "/");
+					strcat(command_path, args[0]);
+
+					if (access(command_path, X_OK) == 0)
+					{
+						if (execve(command_path, args, NULL) == -1)
+						{
+							perror(userInput_buf);
+							free(userInput_buf);
+							free(command_path);
+							exit(EXIT_FAILURE);
+						}
+					}
+
+					free(command_path);
+					dir = strtok(NULL, ":");
+				}
+
+				write(2, args[0], strlen(args[0]));
+				write(2, ": command not found\n", 20);
 				free(userInput_buf);
 				exit(EXIT_FAILURE);
 			}
