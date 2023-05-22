@@ -54,11 +54,11 @@ int main(void)
 		if (strcmp(userInput_buf, "env") == 0)
 		{
 			int i;
-
 			for (i = 0; environ[i]; i++)
 				printf("%s\n", environ[i]);
 			continue;
 		}
+		
 		command_exists = 0;
 		temp_buf = strdup(userInput_buf);
 		command = strtok(temp_buf, " \t\n");
