@@ -9,4 +9,5 @@ we ll be implementing all string handling functions later too, to work with them
 
 ## Approach
 
-We will be writing full code without splitting , make sure it is working, then start to refactor it
+We will be writing full code without splitting , make sure it is working, then start to refactor it.
+Refactoring a code, makes it possible so that we could pass task 0 for betty requirements, and also make our code more readable.
