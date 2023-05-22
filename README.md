@@ -14,4 +14,4 @@ Refactoring a code, makes it possible so that we could pass task 0 for betty req
 
 ### Why did we need to write full block before splitting it into functions?:
 
-the main reason is to make it possible to free whatever memory was dynamically allocated and avoid duplicate frees when switchinf to multiple functions refactoring.
+the main reason is to make it possible to free whatever memory was dynamically allocated and avoid duplicate frees when switching to multiple functions refactoring.
