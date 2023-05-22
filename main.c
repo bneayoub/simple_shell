@@ -10,9 +10,11 @@ int main(void)
 	char *userInput_buf = NULL;
 	size_t size_buf = 0;
 	ssize_t readNO;
-	char *argv[2] = {NULL, NULL};
+	char **args = NULL;
 	pid_t pid;
 	int status = 0;
+	char *tok;
+	char i = 1;
 
 	while (666)
 	{
@@ -23,11 +25,12 @@ int main(void)
 			perror("getline()");
 			exit(EXIT_FAILURE);
 		}
+
 		if (userInput_buf[readNO - 1] == '\n')
 			userInput_buf[readNO - 1] = '\0';
 		if (userInput_buf[0] == '\0')
 			continue;
-		argv[0] = userInput_buf;
+
 		pid = fork();
 		if (pid == -1)
 		{
@@ -37,7 +40,18 @@ int main(void)
 		}
 		if (pid == 0)
 		{
-			if (execve(argv[0], argv, NULL) == -1)
+			tok = strtok(userInput_buf, " \t\n");
+			while (tok)
+			{
+				args = realloc(args, (i + 1) * sizeof(char *));
+				args[i - 1] = malloc(sizeof(char) * strlen(tok) + 1);
+				strcpy(args[i - 1], tok);
+				i++;
+				tok = strtok(NULL, " \t\n");
+			}
+			args[i - 1] = NULL;
+			free(tok);
+			if (execve(args[0], args, NULL) == -1)
 			{
 				perror(userInput_buf);
 				free(userInput_buf);
