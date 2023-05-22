@@ -39,6 +39,26 @@ int main(void)
 		if (userInput_buf[0] == '\0')
 			continue;
 
+		if (strcmp(userInput_buf, "exit") == 0)
+		{
+			free(userInput_buf);
+			if (args)
+			{
+				for (i = 0; args[i]; i++)
+					free(args[i]);
+				free(args);
+			}
+			exit(EXIT_SUCCESS);
+		}
+
+		if (strcmp(userInput_buf, "env") == 0)
+		{
+			int i;
+
+			for (i = 0; environ[i]; i++)
+				printf("%s\n", environ[i]);
+			continue;
+		}
 		command_exists = 0;
 		temp_buf = strdup(userInput_buf);
 		command = strtok(temp_buf, " \t\n");
