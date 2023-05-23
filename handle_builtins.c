@@ -12,12 +12,14 @@ int handle_builtins(char **args)
 
 	if (strcmp(args[0], "exit") == 0)
 	{
+		free_args(args);
 		exit(EXIT_SUCCESS);
 	}
 	else if (strcmp(args[0], "env") == 0)
 	{
 		for (env = environ; *env; ++env)
 			printf("%s\n", *env);
+		free_args(args);
 		return (1);
 	}
 	return (0);
