@@ -21,6 +21,7 @@ void execute_forked_command(char **args, char *userInput_buf)
 	{
 		if (execute_command(args, userInput_buf) == -1)
 			perror(userInput_buf);
+		free(args);
 		exit(EXIT_FAILURE);
 	}
 	if (wait(&status) == -1)
