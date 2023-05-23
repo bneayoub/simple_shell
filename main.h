@@ -8,6 +8,7 @@
 #include <sys/types.h>
 #include <string.h>
 #include <errno.h>
+#include <signal.h>
 
 extern char **environ;
 
@@ -20,5 +21,6 @@ ssize_t read_user_input(char **userInput_buf, size_t *buf_size);
 void execute_forked_command(char **args, char *userInput_buf);
 int validate_command(char **args);
 void free_args(char **args);
+void handle_sig(int sig);
 
 #endif /* MAIN_H */
