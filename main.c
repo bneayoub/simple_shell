@@ -9,7 +9,7 @@ int main(void)
 {
 	char *userInput_buf = NULL;
 	size_t buf_size = 0;
-	ssize_t readNO;
+	ssize_t readNO, i;
 	char **args = NULL;
 
 	while (666)
@@ -30,7 +30,14 @@ int main(void)
 			continue;
 		}
 		execute_forked_command(args, userInput_buf);
-		free(args);
+		if (args != NULL)
+		{
+			for (i = 0; args[i] != NULL; i++)
+			{
+				free(args[i]);
+			}
+			free(args);
+		}
 		if (!isatty(STDIN_FILENO))
 			break;
 	}
