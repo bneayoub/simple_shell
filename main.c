@@ -4,13 +4,14 @@
  * main - our main shell function
  * Return: 0 on success
  */
-
 int main(void)
 {
 	char *userInput_buf = NULL;
 	size_t buf_size = 0;
 	ssize_t readNO, i;
 	char **args = NULL;
+
+	signal(SIGINT, handle_sig);
 
 	while (666)
 	{
