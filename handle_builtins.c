@@ -4,11 +4,12 @@
  * @args: arguments array
  *
  * Return: exit success for exit when successful, and 1 or 0 for env
-*/
+ */
 
 int handle_builtins(char **args)
 {
 	char **env;
+
 	if (strcmp(args[0], "exit") == 0)
 	{
 		exit(EXIT_SUCCESS);
