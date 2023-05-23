@@ -19,8 +19,8 @@ ssize_t read_user_input(char **userInput_buf, size_t *buf_size)
 		perror("getline()");
 		exit(EXIT_FAILURE);
 	}
+
 	if ((*userInput_buf)[readNO - 1] == '\n')
 		(*userInput_buf)[readNO - 1] = '\0';
-
 	return (readNO);
 }
