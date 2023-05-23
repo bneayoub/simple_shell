@@ -19,5 +19,6 @@ int check_spaces_tabs(char *str);
 ssize_t read_user_input(char **userInput_buf, size_t *buf_size);
 void execute_forked_command(char **args, char *userInput_buf);
 int validate_command(char **args);
+void free_args(char **args);
 
 #endif /* MAIN_H */
