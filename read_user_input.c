@@ -15,6 +15,7 @@ ssize_t read_user_input(char **userInput_buf, size_t *buf_size)
 	{
 		if (!isatty(STDIN_FILENO))
 			return (-1);
+		free(userInput_buf);
 		perror("getline()");
 		exit(EXIT_FAILURE);
 	}
