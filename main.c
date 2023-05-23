@@ -20,11 +20,11 @@ int main(void)
 			break;
 		if (userInput_buf[0] == '\0')
 			continue;
-		args = tokenize_input(userInput_buf);
 		if (check_spaces_tabs(userInput_buf))
 		{
 			continue;
 		}
+		args = tokenize_input(userInput_buf);
 		if (!validate_command(args))
 		{
 			continue;
