@@ -8,12 +8,14 @@ int main(void)
 {
 	char *userInput_buf = NULL;
 	size_t buf_size = 0;
-	ssize_t readNO;
+	ssize_t readNO, i;
 	char **args = NULL;
 
 	signal(SIGINT, handle_sig);
+
 	while (666)
 	{
+		userInput_buf = NULL;
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 		readNO = read_user_input(&userInput_buf, &buf_size);
@@ -41,7 +43,11 @@ int main(void)
 		execute_forked_command(args, userInput_buf);
 		if (args != NULL)
 		{
-			free_args(args);
+			for (i = 0; args[i] != NULL; i++)
+			{
+				free(args[i]);
+			}
+			free(args);
 		}
 		free(userInput_buf);
 	}
