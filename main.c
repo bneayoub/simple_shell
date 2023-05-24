@@ -44,9 +44,7 @@ int main(void)
 		if (args != NULL)
 		{
 			for (i = 0; args[i] != NULL; i++)
-			{
 				free(args[i]);
-			}
 			free(args);
 		}
 		free(userInput_buf);
