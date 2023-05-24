@@ -13,7 +13,7 @@ int execute_command(char **args, char *userInput_buf)
 	char path_search[4096];
 	char command_path[4096];
 
-	if (args[0][0] == '/')
+	if (args[0][0] == '/' || args[0][0] == '.')
 	{
 		if (execve(args[0], args, NULL) == -1)
 		{

@@ -11,7 +11,7 @@ int command_exists(char **args)
 	char path_search[4096];
 	char command_path[4096];
 
-	if (args[0][0] == '/')
+	if (args[0][0] == '/' || args[0][0] == '.')
 	{
 		return (access(args[0], X_OK) == 0);
 	}
