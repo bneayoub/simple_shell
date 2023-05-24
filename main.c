@@ -41,8 +41,6 @@ int main(void)
 			}
 			free(args);
 		}
-		if (!isatty(STDIN_FILENO))
-			break;
 	}
 	free(userInput_buf);
 	return (0);
