@@ -2,7 +2,7 @@
 /**
  * validate_command - Checks if the command is a builtin or exists
  * @args: array of command arguments
- *
+ * @userInput_buf: user input buffer
  * Return: 1 if the command is valid, 0 otherwise
  */
 int validate_command(char **args, char *userInput_buf)
