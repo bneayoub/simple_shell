@@ -14,12 +14,12 @@ extern char **environ;
 
 int command_exists(char **args);
 int execute_command(char **args, char *userInput_buf);
-int handle_builtins(char **args);
+int handle_builtins(char **args, char *userInput_buf);
 char **tokenize_input(char *userInput_buf);
 int check_spaces_tabs(char *str);
 ssize_t read_user_input(char **userInput_buf, size_t *buf_size);
 void execute_forked_command(char **args, char *userInput_buf);
-int validate_command(char **args);
+int validate_command(char **args, char *userInput_buf);
 void free_args(char **args);
 void handle_sig(int sig);
 

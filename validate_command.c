@@ -5,9 +5,9 @@
  *
  * Return: 1 if the command is valid, 0 otherwise
  */
-int validate_command(char **args)
+int validate_command(char **args, char *userInput_buf)
 {
-	if (handle_builtins(args))
+	if (handle_builtins(args, userInput_buf))
 	{
 		return (0);
 	}

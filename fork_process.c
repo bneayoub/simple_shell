@@ -10,6 +10,7 @@ void execute_forked_command(char **args, char *userInput_buf)
 {
 	pid_t pid;
 	int status;
+	int i;
 
 	pid = fork();
 	if (pid == -1)
@@ -20,9 +21,16 @@ void execute_forked_command(char **args, char *userInput_buf)
 	if (pid == 0)
 	{
 		if (execute_command(args, userInput_buf) == -1)
+		{
 			perror(userInput_buf);
-		free(args);
-		exit(EXIT_FAILURE);
+			for (i = 0; args[i] != NULL; i++)
+			{
+				free(args[i]);
+			}
+			free(args);
+			free(userInput_buf);
+			exit(EXIT_FAILURE);
+		}
 	}
 	if (wait(&status) == -1)
 		perror("wait");

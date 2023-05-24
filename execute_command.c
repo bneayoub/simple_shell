@@ -6,7 +6,7 @@
  * @userInput_buf:user input buffer
  *
  * Return: executed command with success, or exit failure otherwise
-*/
+ */
 int execute_command(char **args, char *userInput_buf)
 {
 	char *path, *dir;
