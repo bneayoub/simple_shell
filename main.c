@@ -7,16 +7,15 @@
 int main(void)
 {
 	char *userInput_buf, **args = NULL;
-	size_t buf_size = 0;
-	ssize_t readNO, i;
+	size_t buf_size = 0, i;
 
+	signal(SIGINT, handle_sig);
 	while (666)
 	{
 		userInput_buf = NULL;
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
-		readNO = read_user_input(&userInput_buf, &buf_size);
-		if (readNO == -1)
+		if (read_user_input(&userInput_buf, &buf_size) == -1)
 		{
 			free(userInput_buf);
 			break;
