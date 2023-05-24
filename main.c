@@ -16,7 +16,7 @@ int main(void)
 	while (666)
 	{
 		userInput_buf = NULL;
-		if (isatty(STDOUT_FILENO))
+		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 		readNO = read_user_input(&userInput_buf, &buf_size);
 		if (readNO == -1)
