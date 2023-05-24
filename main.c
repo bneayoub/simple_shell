@@ -6,7 +6,7 @@
  */
 int main(void)
 {
-	char *userInput_buf = NULL;
+	char *userInput_buf;
 	size_t buf_size = 0;
 	ssize_t readNO, i;
 	char **args = NULL;
@@ -15,7 +15,9 @@ int main(void)
 
 	while (666)
 	{
-		write(STDOUT_FILENO, "$ ", 2);
+		userInput_buf = NULL;
+		if (isatty(STDOUT_FILENO))
+			write(STDOUT_FILENO, "$ ", 2);
 		readNO = read_user_input(&userInput_buf, &buf_size);
 		if (readNO == -1)
 			break;
