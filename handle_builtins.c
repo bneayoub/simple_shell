@@ -14,7 +14,7 @@ int handle_builtins(char **args, char *userInput_buf, int exit_num)
 	int exit_status = EXIT_SUCCESS;
 	int i;
 
-	if (strcmp(args[0], "exit") == 0)
+	if (_strcmp(args[0], "exit") == 0)
 	{
 		if (args[1])
 			exit_status = atoi(args[1]);
@@ -29,7 +29,7 @@ int handle_builtins(char **args, char *userInput_buf, int exit_num)
 		free(userInput_buf);
 		exit(exit_status);
 	}
-	else if (strcmp(args[0], "env") == 0)
+	else if (_strcmp(args[0], "env") == 0)
 	{
 		for (env = environ; *env; ++env)
 			printf("%s\n", *env);

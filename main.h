@@ -12,6 +12,7 @@
 
 extern char **environ;
 
+/* MAIN FUNCTIONS*/
 int command_exists(char **args);
 int execute_command(char **args, char *userInput_buf);
 int handle_builtins(char **args, char *userInput_buf, int exit_num);
@@ -22,5 +23,13 @@ int execute_forked_command(char **args, char *userInput_buf);
 int validate_command(char **args, char *userInput_buf, int exit_num);
 void free_args(char **args);
 void handle_sig(int sig);
+
+/* STR HANDLERS */
+int _strlen(char *s);
+int _strcmp(char *s1, char *s2);
+char *_sprintf(char *str, char *delim, char *src);
+
+
+
 
 #endif /* MAIN_H */
