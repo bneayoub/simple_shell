@@ -6,7 +6,7 @@
  *
  * Return: void
  */
-void execute_forked_command(char **args, char *userInput_buf)
+int execute_forked_command(char **args, char *userInput_buf)
 {
 	pid_t pid;
 	int status;
@@ -34,4 +34,7 @@ void execute_forked_command(char **args, char *userInput_buf)
 	}
 	if (wait(&status) == -1)
 		perror("wait");
+	if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
+	return (-1);
 }

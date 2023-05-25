@@ -3,11 +3,13 @@
  * validate_command - Checks if the command is a builtin or exists
  * @args: array of command arguments
  * @userInput_buf: user input buffer
+ * @exit_num: exit number
+ *
  * Return: 1 if the command is valid, 0 otherwise
  */
-int validate_command(char **args, char *userInput_buf)
+int validate_command(char **args, char *userInput_buf, int exit_num)
 {
-	if (handle_builtins(args, userInput_buf))
+	if (handle_builtins(args, userInput_buf, exit_num))
 	{
 		return (0);
 	}

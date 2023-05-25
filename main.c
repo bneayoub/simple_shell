@@ -8,8 +8,8 @@ int main(void)
 {
 	char *userInput_buf, **args = NULL;
 	size_t buf_size = 0, i;
+	int exit_num = -1;
 
-	signal(SIGINT, handle_sig);
 	while (666)
 	{
 		userInput_buf = NULL;
@@ -31,12 +31,12 @@ int main(void)
 			continue;
 		}
 		args = tokenize_input(userInput_buf);
-		if (!validate_command(args, userInput_buf))
+		if (!validate_command(args, userInput_buf, exit_num))
 		{
 			free(userInput_buf);
 			continue;
 		}
-		execute_forked_command(args, userInput_buf);
+		exit_num = execute_forked_command(args, userInput_buf);
 		if (args != NULL)
 		{
 			for (i = 0; args[i] != NULL; i++)
