@@ -13,9 +13,9 @@ char *_sprintf(char *str, char *delim, char *src)
 	char *new_str;
 	int len_str, len_delim, len_src;
 
-	len_str = strlen(str);
-	len_delim = strlen(delim);
-	len_src = strlen(src);
+	len_str = _strlen(str);
+	len_delim = _strlen(delim);
+	len_src = _strlen(src);
 
 	new_str = malloc((len_str + len_delim + len_src + 1) * sizeof(char));
 	if (new_str == NULL)
@@ -24,9 +24,9 @@ char *_sprintf(char *str, char *delim, char *src)
 		exit(EXIT_FAILURE);
 	}
 
-	strcpy(new_str, str);
-	strcat(new_str, delim);
-	strcat(new_str, src);
+	_strcpy(new_str, str);
+	_strcat(new_str, delim);
+	_strcat(new_str, src);
 
 	return (new_str);
 }

@@ -28,8 +28,7 @@ void handle_sig(int sig);
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 char *_sprintf(char *str, char *delim, char *src);
-
-
-
+char *_strcat(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
 
 #endif /* MAIN_H */
