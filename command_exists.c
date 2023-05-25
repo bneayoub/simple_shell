@@ -24,7 +24,7 @@ int command_exists(char **args)
 			exit(EXIT_FAILURE);
 		}
 
-		_sprintf(path_search, "%s:/usr/bin", path);
+		sprintf(path_search, "%s:/usr/bin", path);
 
 		dir = strtok(path_search, ":");
 		while (dir)

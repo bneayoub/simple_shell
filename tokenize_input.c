@@ -17,7 +17,7 @@ char **tokenize_input(char *userInput_buf)
 	while (parsed != NULL)
 	{
 		args = realloc(args, (index + 2) * sizeof(char *));
-		args[index] = malloc(_strlen(parsed) + 1);
+		args[index] = malloc(strlen(parsed) + 1);
 		strcpy(args[index++], parsed);
 		parsed = strtok(NULL, separator);
 	}

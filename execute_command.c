@@ -30,7 +30,7 @@ int execute_command(char **args, char *userInput_buf)
 			exit(EXIT_FAILURE);
 		}
 
-		_sprintf(path_search, "%s:/usr/bin", path);
+		sprintf(path_search, "%s:/usr/bin", path);
 
 		dir = strtok(path_search, ":");
 		while (dir)
